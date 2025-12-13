@@ -1,4 +1,22 @@
-EXEC silver.load_silver 
+/*
+===============================================================================
+Stored Procedure: Load Silver Layer (Bronze -> Silver)
+===============================================================================
+Script Purpose:
+    This stored procedure performs the ETL (Extract, Transform, Load) process to 
+    populate the 'silver' schema tables from the 'bronze' schema.
+	Actions Performed:
+		- Truncates Silver tables.
+		- Inserts transformed and cleansed data from Bronze into Silver tables.
+		
+Parameters:
+    None. 
+	  This stored procedure does not accept any parameters or return any values.
+
+Usage Example:
+    EXEC Silver.load_silver;
+===============================================================================
+*/
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS 
 BEGIN
@@ -16,7 +34,7 @@ BEGIN
 		SET @start_time = GETDATE()
 		PRINT '>> Truncating Table: silver.crm_cust_info'	 
 		TRUNCATE TABLE silver.crm_cust_info
-		PRINT '>> Inserting Data into : silver.crm_cust_info'
+		PRINT '>> Inserting Data into: silver.crm_cust_info'
 		INSERT INTO silver.crm_cust_info (
 			cst_id,
 			cst_key,
@@ -100,9 +118,9 @@ BEGIN
 		PRINT '------------------------------------------'
 
 		SET @start_time = GETDATE()
-		PRINT '>> Truncating Table : silver.crm_sales_details'
+		PRINT '>> Truncating Table: silver.crm_sales_details'
 		TRUNCATE TABLE silver.crm_sales_details
-		PRINT'>> Inserting Data into : silver.crm_sales_details'
+		PRINT'>> Inserting Data into: silver.crm_sales_details'
 		INSERT INTO silver.crm_sales_details (
 			sls_ord_num,
 			sls_prd_key,
@@ -152,9 +170,9 @@ BEGIN
 		PRINT '------------------------------------------'
 
 		SET @start_time = GETDATE()
-		PRINT '>> Truncating Table : silver.erp_cust_az12'
+		PRINT '>> Truncating Table: silver.erp_cust_az12'
 		TRUNCATE TABLE silver.erp_cust_az12
-		PRINT '>> Inserting Data into : silver.erp_cust_az12'
+		PRINT '>> Inserting Data into: silver.erp_cust_az12'
 
 		INSERT INTO silver.erp_cust_az12 (
 			cid,
@@ -189,9 +207,9 @@ BEGIN
 		PRINT '------------------------------------------'
 
 		SET @start_time = GETDATE()
-		PRINT '>> Truncating Table : silver.erp_loc_a101'
+		PRINT '>> Truncating Table: silver.erp_loc_a101'
 		TRUNCATE TABLE silver.erp_loc_a101
-		PRINT '>> Inserting Data into : silver.erp_loc_a101'
+		PRINT '>> Inserting Data into: silver.erp_loc_a101'
 
 		INSERT INTO silver.erp_loc_a101 (
 			cid,
@@ -217,9 +235,9 @@ BEGIN
 		PRINT '------------------------------------------'
 
 		SET @start_time = GETDATE()
-		PRINT '>> Truncating Table : silver.erp_px_cat_g1v2'
+		PRINT '>> Truncating Table: silver.erp_px_cat_g1v2'
 		TRUNCATE TABLE silver.erp_px_cat_g1v2
-		PRINT '>> Inserting Data into : silver.erp_px_cat_g1v2'
+		PRINT '>> Inserting Data into: silver.erp_px_cat_g1v2'
 		INSERT INTO silver.erp_px_cat_g1v2 (
 			id,
 			cat,
