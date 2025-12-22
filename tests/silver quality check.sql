@@ -6,7 +6,7 @@ SELECT
 	COUNT(*)
 FROM silver.crm_cust_info
 GROUP BY cst_id
-HAVING COUNT(*) > 1;
+HAVING COUNT(*) > 1 OR 	cst_id IS NULL;
 
 -- Check for names with trailing space
 SELECT cst_firstname
@@ -67,10 +67,10 @@ WHERE prd_key IN ('AC-HE-HL-U509-R', 'AC-HE-HL-U509')
 
 /*	====== BRONZE crm_prd_info table cleaning ======	*/
 
--- checking for NULLS in 
+-- checking for NULLS and whitespace in sls_prd_key
 SELECT *
 FROM bronze.crm_sales_details
-WHERE sls_prd_key != TRIM(sls_prd_key)
+WHERE sls_prd_key != TRIM(sls_prd_key) OR sls_prd_key IS NULL
 
 -- Checking FOR product key in sales that doesnt match prd_key
 SELECT *
