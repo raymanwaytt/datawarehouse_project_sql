@@ -91,7 +91,3 @@ data-warehouse-project/
 
 - **LinkedIn:** https://linkedin.com/in/abdulrahman-aruna-4b564b327  
 - **Portfolio:** https://raymanwaytt.github.io/Rayportfolio.github.io/
-
-
-## Acknowledgment
-This project was inspired by concepts and architectural patterns from Barah’s data warehouse project, adapted and implemented independently.
